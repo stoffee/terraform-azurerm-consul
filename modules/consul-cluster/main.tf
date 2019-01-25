@@ -11,7 +11,7 @@ resource "azurerm_public_ip" "consul_access" {
   location = "${var.location}"
   resource_group_name = "${var.resource_group_name}"
   #public_ip_address_allocation = "static"
-  allocation_method = "static"
+  allocation_method = "Static"
   domain_name_label = "${var.cluster_name}"
 }
 
