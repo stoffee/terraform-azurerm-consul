@@ -123,7 +123,7 @@ module "consul_clients" {
   # section of https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview
   #
   # For testing and development purposes, set this to true. For production, this should be set to false.
-  associate_public_ip_address_load_balancer = true
+  associate_public_ip_address_load_balancer = false
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
