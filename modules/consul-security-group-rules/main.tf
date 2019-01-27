@@ -146,16 +146,16 @@ resource "azurerm_network_security_rule" "allow_dns_udp_inbound" {
   source_port_range = "1024-65535"
 }
 
-resource "azurerm_network_security_rule" "denyall" {
-  access = "Deny"
-  destination_address_prefix = "*"
-  destination_port_range = "*"
-  direction = "Inbound"
-  name = "DenyAll"
-  network_security_group_name = "${var.security_group_name}"
-  priority = 999
-  protocol = "*"
-  resource_group_name = "${var.resource_group_name}"
-  source_address_prefix = "*"
-  source_port_range = "*"
-}
+#resource "azurerm_network_security_rule" "denyall" {
+#  access = "Deny"
+#  destination_address_prefix = "*"
+#  destination_port_range = "*"
+#  direction = "Inbound"
+#  name = "DenyAll"
+#  network_security_group_name = "${var.security_group_name}"
+#  priority = 999
+#  protocol = "*"
+#  resource_group_name = "${var.resource_group_name}"
+#  source_address_prefix = "*"
+#  source_port_range = "*"
+#}
