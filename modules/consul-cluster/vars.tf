@@ -92,7 +92,7 @@ variable "subnet_ids" {
 variable "allowed_ssh_cidr_blocks" {
   description = "A list of CIDR-formatted IP address ranges from which the Azure Instances will allow SSH connections"
   type        = "list"
-  default     = []
+  default     = ["0.0.0.0/0"]
 }
 
 variable "associate_public_ip_address_load_balancer" {
