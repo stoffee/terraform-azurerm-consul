@@ -21,20 +21,20 @@ terraform {
 # CREATE THE NECESSARY NETWORK RESOURCES FOR THE EXAMPLE
 # ---------------------------------------------------------------------------------------------------------------------
 
-data "azurerm_resource_group" "consul" {
-  name = "${var.resource_group_name}"
-}
+#data "azurerm_resource_group" "consul" {
+#  name = "${var.resource_group_name}"
+#}
 
 resource "azurerm_virtual_network" "consul" {
   name = "consulvn"
   address_space = ["${var.address_space}"]
   location = "${var.location}"
-  resource_group_name = "${data.azurerm_resource_group.consul.name}"
+  resource_group_name = "${var.resource_group_name}"
 }
 
 resource "azurerm_subnet" "consul" {
   name = "consulsubnet"
-  resource_group_name = "${data.azurerm_resource_group.consul.name}"
+  resource_group_name = "${var.resource_group_name}"
   virtual_network_name = "${azurerm_virtual_network.consul.name}"
   address_prefix = "${var.subnet_address}"
 }
@@ -58,7 +58,7 @@ module "consul_servers" {
   allowed_ssh_cidr_blocks = "${var.allowed_ssh_cidr_blocks}"
   allowed_inbound_cidr_blocks = "${var.allowed_inbound_cidr_blocks}"
 
-  resource_group_name = "${data.azurerm_resource_group.consul.name}"
+  resource_group_name = "${var.resource_group_name}"
   storage_account_name = "${var.storage_account_name}"
 
   location = "${var.location}"
@@ -114,7 +114,7 @@ module "consul_clients" {
   allowed_ssh_cidr_blocks = "${var.allowed_ssh_cidr_blocks}"
   allowed_inbound_cidr_blocks = "${var.allowed_inbound_cidr_blocks}"
 
-  resource_group_name = "${data.azurerm_resource_group.consul.name}"
+  resource_group_name = "${var.resource_group_name}"
   storage_account_name = "${var.storage_account_name}"
 
 
